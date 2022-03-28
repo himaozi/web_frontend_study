@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* 內减模式 */
+    box-sizing: border-box;
+}
+.clearfix:before,.clearfix:after {
+    content:"";
+    display:table; 
+  }
+  .clearfix:after {
+    clear:both;
+  }
+
+table{
+    border-collapse: collapse;
+
+  }
+td{
+    width: 125px;
+    height: 125px;
+    line-height: 125px;
+    vertical-align: middle;
+    text-align: center;
+    border: 2px solid #999;
+    background-color: #f2f2f2;
+    font-size: 30px;
+}
+
+.shuchu{
+    background-color: #fff;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getdate() {
+            let today = new Date()
+            year = today.getFullYear()
+            month = today.getMonth()
+            date = today.getDate()
+            day = today.getDay()
+            if(month < 10) month = '0'+ month
+            if(date < 10) date = '0'+ date
+
+            document.write(`${year}年${month}月${date}日星期${day}`)
+
+        }
+        getdate()
+
+    </script>
+</body>
+</html>
