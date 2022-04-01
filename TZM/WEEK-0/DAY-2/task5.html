@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- 输入一个数组,给每个元素乘以,输出一个新数组: 输入[1,2,3,4] 输出 [2,4,6,8] -->
     <script>
-        let a = [1, 2, 3, 4]
-        for(i = 0; i < a.length; i++ ){
-            document.write(2*a[i])
+      let a = [1, 2, 3, 4];
+      for (i = 0; i < a.length; i++) {
+        document.write(2 * a[i]);
+      }
+      // 注意题干 输入 输出都是一个数组~
+      // 方法1
+      function getNewArray(arr) {
+        let res = [];
+        for (i = 0; i < arr.length; i++) {
+          // 可以学习下数组的 push shift unshift pop这几个方法
+          res.push(arr[i] * 2);
         }
+        // 以后打印东西不要用document.write用console.log()  在页面上按F12 在控制台看输出 (这样才professional~)
+        console.log(res);
+        // return就表示输出  res是一个数组 所以这个方法输出了一个数组
+        return res;
+      }
+      getNewArray([1, 2, 3, 4]);
+
+      // 数组有个map方法可以更简洁的做这个事 map方法天然返回一个新的数组
+      function getNewArray2(arr) {
+        return arr.map(function (item, index) {
+          return item * 2;
+        });
+      }
+      getNewArray2([1, 2, 3, 4]);
     </script>
-</body>
+  </body>
 </html>

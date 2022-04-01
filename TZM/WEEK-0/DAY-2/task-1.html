@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- 1.输入一个字符串,控制台按顺序打印出来: 输入'abc de', 输出 a,b,c,'  ' ,e -->
     <script>
-        let a = Array(5)
-        a = prompt()
-        console.log(a)
-        
+      let a = Array(5);
+      a = prompt();
+      console.log(a);
+
+      // 其实我说的输入不是指调用prompt这个方法让输入
+      // 一般说输入指的是写一个function 输入表示function的参数
+      function outPutStr(str) {
+        for (let i = 0; i < str.length; i++) {
+          console.log(str.charAt(i));
+        }
+      }
+      outPutStr('abc de');
     </script>
-</body>
+  </body>
 </html>

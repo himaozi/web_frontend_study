@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- 2.翻转字符串: 输入 'abcde' 输出  'edcba' -->
     <script>
-        let a = Array.from('abcde')
-        let count = 4
-        while(count <= 4 && count >= 0){
-            document .write(a[count])
-            count--
+      let a = Array.from('abcde');
+      let count = 4;
+      while (count <= 4 && count >= 0) {
+        document.write(a[count]);
+        count--;
+      }
 
+      function reverseStr(str) {
+        let a = Array.from(str);
+        let count = a.length - 1;
+        let res = '';
+        while (count >= 0) {
+          res = res + a[count];
+          count--;
         }
-    
-     
- 
+        console.log(res);
+      }
+      // 用function来解决问题更灵活 可以传入任意符合条件的参数 "function是js的一等公民"
+      reverseStr('abcde');
+      reverseStr('xycdt');
+
+      // 实现一个功能的方法有很多种 看下下边这种比较简洁的
+      function reverseStr2(str) {
+        // 数组自带了反转方法
+        let a = Array.from(str).reverse();
+        //数组调用join可以转成字符串
+        console.log(a.join(''))
+      }
+      reverseStr2('abcde');
+      reverseStr2('xycdt');
     </script>
-</body>
+  </body>
 </html>
