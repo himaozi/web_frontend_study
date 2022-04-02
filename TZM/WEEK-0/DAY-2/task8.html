@@ -12,23 +12,23 @@
 name表示姓名,score表示分数,小于60不及格,输入一个数组,存放不及格的人名
 上述数据输出应该为   ['a','b','d'] -->
     <script>
-      let a = new Array();
-      a[0] = ['zhangchao ', 100];
-      a[1] = ['Liuyun ', 50];
-      a[3] = ['lihua ', 70];
-      a[4] = ['Tanghuan ', 30];
-      let name = [];
-      let index = 0;
-      a.forEach(function (elem) {
-        if (elem[1] < 60) {
-          name[index] = elem[0];
-          index++;
-        }
-      });
-      document.write(name);
+      // let a = new Array();
+      // a[0] = ['zhangchao ', 100];
+      // a[1] = ['Liuyun ', 50];
+      // a[3] = ['lihua ', 70];
+      // a[4] = ['Tanghuan ', 30];
+      // let name = [];
+      // let index = 0;
+      // a.forEach(function (elem) {
+      //   if (elem[1] < 60) {
+      //     name[index] = elem[0];
+      //     index++;
+      //   }
+      // });
+      // document.write(name);
 
-      // 你好像没有理解数组对象
-      // 下边这就是个数组对象
+      // // 你好像没有理解数组对象
+      // // 下边这就是个数组对象
       let data = [
         { name: 'a', score: 58 },
         { name: 'b', score: 59 },
@@ -38,7 +38,16 @@ name表示姓名,score表示分数,小于60不及格,输入一个数组,存放�
       ];
       // 试着完成这个方法
       function pick(arrObj) {
+        res = []
         // todo
+        arrObj.forEach(function(elem, index){
+          
+          if(elem.score < 60){
+          res.push(elem.name)
+          }
+        })
+        console.log(res)
+        return res
       }
       pick(data);
       // 控制台 输出应该为 ['a','b','d']

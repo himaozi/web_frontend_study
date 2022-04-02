@@ -9,10 +9,18 @@
   <body>
     <!-- 输入3个参数,一个数组,一个元素,一个位置,将这个元素插入数组中的指定位置例如:输入[1,2,3,5],4,3将4插入到给定数组索引3的位置输出[1,2,3,4,5], initial-scale=1.0"> -->
     <script>
-      let a = [1, 2, 3, 5];
-      a.splice(2, 0, 4);
-      document.write(a);
-      // splice没问题 试着将这个题目写成一个function~
+      // let a = [1, 2, 3, 5];
+      // a.splice(2, 0, 4);
+      // document.write(a);
+      // // splice没问题 试着将这个题目写成一个function~
+
+      function splice1(arr, item, index){
+        arr.splice(index, 0, item)
+        console.log(arr)
+        return arr
+
+      }
+      splice1([1, 2, 3, 5], 4, 3)
     </script>
   </body>
 </html>

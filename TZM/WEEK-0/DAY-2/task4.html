@@ -13,12 +13,23 @@
       // for(i = 0; i < a.length; i++){
       //     document.write(`${a[i]}`)
       // }
-      let a = [1, 2, 3, 4, 5];
-      a.forEach(function (item, index) {
-        // 这里的item 其实就是 a[index]
-        document.write(a[index]);
-      });
+
+      // let a = [1, 2, 3, 4, 5];
+      // a.forEach(function (item, index) {
+      //   // 这里的item 其实就是 a[index]
+      //   document.write(item);
+      // });
       // 尝试改成 function的形式~
+
+      function forEach1(arr){
+        arr.forEach(function(item, index){
+          console.log(item)
+        }
+        )
+      }
+      forEach1([1, 2, 3, 4, 5])
+
+
     </script>
   </body>
 </html>
