@@ -7,7 +7,10 @@
     <title>Document</title>
   </head>
   <body>
-    <button onclick="alert('hello world!')">点我</button>
+    <!-- 首先你的写法没问题,但是假如我们的点击后触发的方法逻辑非常复杂怎么办? -->
+    <!-- 那就需要把这个点击的方法提取出来单独写了 像我这样 
+      myAlert 的具体实现在index.js里 因为我用script标签导入了这个文件我才能这样用 -->
+    <button onclick="myAlert()">点我</button>
     <script src="./index.js"></script>
   </body>
 </html>

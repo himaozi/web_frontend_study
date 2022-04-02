@@ -1,6 +1,5 @@
-// 以后每天的task 都这样统一写在一个文件就好了 (因为我用script标签把这个js文件连接到index.html里了) 
+// 以后每天的task 都这样统一写在一个文件就好了 (因为我用script标签把这个js文件连接到index.html里了)
 // 不用一个任务建一个html~
-
 
 /**
  * for example
@@ -19,3 +18,8 @@ function minus(a, b) {
 }
 
 test2(3, 1);
+
+// html点击事件调用的就是这个方法
+function myAlert() {
+  alert('hello world!');
+}
