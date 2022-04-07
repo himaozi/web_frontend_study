@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO Application</title>
+</head>
+<body>
+    <div id="counter">
+        Counter: {{ counter }}
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script type="text/javascript">
+        const Counter = {
+            data() {
+                return {
+                    counter: 0
+                }
+            }
+        }
+
+        Vue.createApp(Counter).mount('#counter')
+    </script>
+</body>
+</html>

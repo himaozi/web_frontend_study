@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Vue 基础</title>
+</head>
+<body>
+    <header>
+        <div>TODO Application</div>
+    </header>
+    <br>
+    <main>
+        <div id="app">
+            <label>
+                <input v-model="message">
+            </label>
+            <button v-on:click="addItem"><span>添加</span></button>
+            <!--todo 分割线-->
+            <!--todo icon 置顶-->
+            <div>置顶</div>
+            <ul>
+                <li v-for="starItem in starList">
+<!--                    <radio v-on="item.completed"></radio>-->
+                    {{starItem.message}}
+                    <!--todo star icon-->
+                    <button v-on:click="toggleStar(starItem)">star</button>
+                    <button>删除</button>
+                </li>
+            </ul>
+
+            <li v-for="todoItem in todoList">
+                {{todoItem.message}}
+                <!--todo star icon-->
+                <!--可以传入一个this吗？-->
+                <button v-on:click="toggleStar(todoItem)">star</button>
+                <button v-on:click="deleteItem(todoItem)">删除</button>
+            </li>
+
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                item:{
+                    message:"",
+                    star:false,
+                    completed:false,
+
+                },
+                starList:[],
+                todoList:[],
+                message: 'Hello Vue!'
+            },
+            methods:{
+                addItem: function (){
+                    // this 指向哪里？
+                    console.log(this.message)
+                    this.todoList.push({
+                        message:this.message,
+                        top:false,
+                        completed: false
+                    })
+                },
+                deleteItem: function (item){
+                    // 如何打印对象中的全部属性？
+                    // console.log("window" + this)
+                    console.log(item)
+                    // todo 什么时候回收不在[]中的对象呢？（垃圾对象）
+                    this.todoList = this.todoList.filter(elm => item !== elm)
+                },
+                toggleStar: function (item){
+                    item.star = !item.star
+                    if (item.star){
+                        // 置顶
+                        console.log("置顶")
+                        this.starList.push(item)
+                        this.todoList = this.todoList.filter(elm => item !== elm)
+                    }
+                    else {
+                        console.log("取消置顶")
+                        this.todoList.push(item)
+                        this.starList = this.starList.filter(elm => item !== elm)
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
