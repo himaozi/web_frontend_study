@@ -18,14 +18,14 @@
   <body>
     <div class="container">
       <p>task-0</p>
-      <button>-</button>
-      <input type="text" value="0" />
-      <button>+</button>
+      <button onclick="reduce()">-</button>
+      <input type="text" value="0" id="result"/>
+      <button onclick="add()">+</button>
       <p>请实现: 点击"-"使显示的数字 -1,点击"+" 数字+1</p>
       <script src="./index.js"></script>
       <hr />
       <p>task-1</p>
-      <button style="margin-bottom: 10px;">生成表格</button>
+      <button style="margin-bottom: 10px;" onclick="tableFunction()">生成表格</button>
       <table border="2px" id="ta">
         <tr>
           <th>姓名</th>
@@ -36,9 +36,9 @@
       <p>请实现: 点击生成表格的按钮,将数据渲染成表格,数据在index.js tableData</p>
       <hr>
       <p>task-2</p>
-      <input type="text" value = 'to do'>  <button>add</button>
-      <button>clear all</button>
-      <ul>
+      <input type="text" value = 'to do' id="todolist">  <button onclick="addList()">add</button>
+      <button onclick="myclearAll()">clear all</button>
+      <ul id="tb">
           <li>to do</li>
       </ul>
       <p>请实现: 点击add 将输入框内的内容生成一条list 点击clear all 清空所有list</p>
