@@ -1,110 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Vue 基础</title>
     <link href="demo.css" rel="stylesheet">
 </head>
+
 <body>
-<header>
-    <div>TODO Application</div>
-</header>
-<br>
-<main>
-    <div id="app">
-        <label>
-            <input v-model="message">
-        </label>
-        <button v-on:click="addItem"><span>添加</span></button>
-        <!-- 分割线hr 换行br-->
-        <hr>
-        <!--todo icon 置顶-->
-        <div>置顶</div>
-        <ul>
-            <li v-for="starItem in starList">
-                <!--       todo 重构         -->
-                <!--       todo 如何切换属性？checkBox        -->
-                <input type="checkbox" name="completed" v-bind:value="starItem.completed">
-                <button class="completedButton" v-on:click="toggleCompleted(starItem)">完成</button>
-                <span v-bind:style="{'text-decoration':starItem.cssCompleted}">{{starItem.message}}</span>
-                <!--todo star icon-->
-                <button v-on:click="toggleStar(starItem)">star</button>
-                <button class="deleteButton" v-on:click="deleteItem(starItem)">删除</button>
-            </li>
-        </ul>
-        <hr>
-        <ul>
-        <li v-for="todoItem in todoList">
-            <input type="checkbox" name="completed" v-bind:value="todoItem.completed">
-            <button class="completedButton" v-on:click="toggleCompleted(todoItem)">完成</button>
-            <span v-bind:style="{'text-decoration':todoItem.cssCompleted}">{{todoItem.message}}</span>
-            <!--todo star icon-->
-            <!--可以传入一个this吗？-->
-            <button v-on:click="toggleStar(todoItem)">star</button>
-            <button class="deleteButton" v-on:click="deleteItem(todoItem)">删除</button>
-        </li>
-        </ul>
 
+    <div class="container">
+        <header>
+            <div>TODO Application</div>
+        </header>
+        <br>
+        <main>
+            <div id="app" class="app">
+                <label>
+                    <input class="input-add" v-model="message">
+                </label>
+                <button class="button-info" v-on:click="addItem"><span>添加</span></button>
+                <!-- 分割线hr 换行br-->
+                <hr>
+                <!--todo icon 置顶-->
+                <div>置顶</div>
+                <ul>
+                    <li v-for="starItem in starList">
+                        <!--       todo 重构         -->
+                        <!--       todo 如何切换属性？checkBox        -->
+                        <input type="checkbox" name="completed" v-bind:value="starItem.completed"
+                            v-on:click="toggleCompleted(starItem)">
+                        <span v-bind:style="{'text-decoration':starItem.cssCompleted}">{{starItem.message}}</span>
+                        <!--todo star icon-->
+                        <button class="button-warning"v-on:click="toggleStar(starItem)">取消置顶</button>
+                        <button class="button-danger" v-on:click="deleteItem(starItem)">删除</button>
+                    </li>
+                </ul>
+                <hr>
+                <ul>
+                    <li v-for="todoItem in todoList">
+                        <input type="checkbox" name="completed" v-bind:value="todoItem.completed"
+                            v-on:click="toggleCompleted(todoItem)">
+                        <span v-bind:style="{'text-decoration':todoItem.cssCompleted}">{{todoItem.message}}</span>
+                        <!--todo star icon-->
+                        <!--可以传入一个this吗？ -->
+                        <!--todo 取消置顶后数据顺序被打乱-->
+                        <button class="button-default" v-on:click="toggleStar(todoItem)">置顶</button>
+                        <button class="button-danger" v-on:click="deleteItem(todoItem)">删除</button>
+                    </li>
+                </ul>
+
+            </div>
+        </main>
     </div>
-</main>
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-<script type="text/javascript">
-    let app = new Vue({
-        el: '#app',
-        data: {
-            item: {
-                message: "",
-                star: false,
-                completed: false,
-                cssCompleted: ''
-            },
-            starList: [],
-            todoList: [],
-            message: '添加一项待办清单',
-        },
-        // 计算completed 来获得样式
-        computed:{
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script type="text/javascript">
 
-
-        },
-        methods: {
-            addItem: function () {
-                // this 指向哪里？
-                console.log(this.message)
-                this.todoList.push({
-                    message: this.message,
-                    top: false,
-                    completed: false,
-                    cssCompleted: ''
-                })
-            },
-            deleteItem: function (item) {
-                // 如何打印对象中的全部属性？ 这个Item 是Item的对象
-                // console.log("window" + this)
-                console.log(item)
-                // todo 什么时候回收不在[]中的对象呢？（垃圾对象）
-                // filter 不改变元数组,
-                this.todoList = this.todoList.filter(elm => item !== elm)
-                this.starList = this.starList.filter(elm => item !== elm)
-            },
-            toggleStar: function (item) {
-                item.star = !item.star
-                if (item.star) {
-                    // 置顶
-                    console.log("置顶")
-                    this.starList.push(item)
-                    this.todoList = this.todoList.filter(elm => item !== elm)
-                } else {
-                    console.log("取消置顶")
-                    this.todoList.push(item)
-                    this.starList = this.starList.filter(elm => item !== elm)
-                }
-            },
-            toggleCompleted: function (item) {
-                item.cssCompleted = item.cssCompleted === '' ? 'line-through' : ''
+        count = () => {
+            let count = 0
+            function getCounter() {
+                return count++
             }
+            return getCounter
         }
-    });
-</script>
+        index = count()
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+                item: {
+                    message: "",
+                    star: false,
+                    completed: false,
+                    cssCompleted: '',
+                    i: index()
+                },
+                starList: [],
+                todoList: [],
+                message: '添加一项待办清单',
+            },
+            // 计算completed 来获得样式
+            computed: {
+
+
+            },
+            methods: {
+                addItem: function () {
+                    // this 指向哪里？
+                    console.log(this.message)
+                    this.todoList.push({
+                        message: this.message,
+                        top: false,
+                        completed: false,
+                        cssCompleted: ''
+                    })
+                },
+                deleteItem: function (item) {
+                    // 如何打印对象中的全部属性？ 这个Item 是Item的对象
+                    // console.log("window" + this)
+                    console.log(item)
+                    // todo 什么时候回收不在[]中的对象呢？（垃圾对象）
+                    // filter 不改变元数组,
+                    this.todoList = this.todoList.filter(elm => item !== elm)
+                    this.starList = this.starList.filter(elm => item !== elm)
+                },
+                toggleStar: function (item) {
+                    item.star = !item.star
+                    if (item.star) {
+                        // 置顶
+                        console.log("置顶")
+                        this.starList.push(item)
+                        this.todoList = this.todoList.filter(elm => item !== elm)
+                    } else {
+                        console.log("取消置顶")
+                        this.todoList.push(item)
+                        this.starList = this.starList.filter(elm => item !== elm)
+                    }
+                },
+                toggleCompleted: function (item) {
+                    item.completed = !item.completed
+                    item.cssCompleted = item.completed ? 'line-through' : ''
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>
