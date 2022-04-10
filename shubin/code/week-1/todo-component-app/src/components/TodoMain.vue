@@ -13,7 +13,7 @@
       <div>置顶</div>
       <ul>
         <todo-item
-          v-for="item in starList"
+          v-for="item in sortStarList"
           v-bind:item="item"
           :key="item.id"
           @toggleStar="toggleStar"
@@ -24,7 +24,7 @@
       <hr />
       <ul>
         <todo-item
-          v-for="item in todoList"
+          v-for="item in sortTodoList"
           v-bind:item="item"
           :key="item.id"
           @toggleStar="toggleStar"
@@ -83,6 +83,7 @@ export default {
         message: message,
         star: false,
         completed: false,
+        createTime: Date.now(),
       });
     },
     toggleStar: function (item) {
@@ -107,6 +108,12 @@ export default {
   },
   computed: {
     //todo 排序数组
+    sortStarList() {
+      return this.starList.slice(0).sort((a, b) => a.createTime - b.createTime);
+    },
+    sortTodoList() {
+      return this.todoList.slice(0).sort((a, b) => a.createTime - b.createTime);
+    },
   },
 };
 </script>
