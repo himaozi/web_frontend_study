@@ -14,18 +14,32 @@
 
 table{
     border-collapse: collapse;
+    
 
   }
-td.button{
+input{
   display: inline-block;
-    width: 125px;
+  height:125px;
+  width: 375px;
+  border: none;
+  font-size: 40px;
+  line-height: 75px;
+}
+  td{
+    border: 1px solid #999;
+  }
+
+button{
+  width: 125px;
     height: 125px;
     line-height: 125px;
     vertical-align: middle;
     text-align: center;
-    border: 2px solid #999;
     background-color: #f2f2f2;
     font-size: 30px;
+    border: none;
+   
+
 }
 
 .shuchu{
