@@ -17,45 +17,40 @@ const tableData = [
 ];
 
 // task1
-function reduce(){
-  document.getElementById("result").value--
+function reduce() {
+  document.getElementById('result').value--;
 }
 
-function add(){
-  document.getElementById("result").value++
- }
- 
+function add() {
+  document.getElementById('result').value++;
+}
 
 //  task2
-function tableFunction(){
-  for(i = 0; i < tableData.length; i++){
-    var tr = document.createElement('tr')
-  document.getElementById('ta').appendChild(tr);
-  for(var k in tableData[i]) {
-    var td = document.createElement('td')
-    tr.appendChild(td)
-    td.innerText = tableData[i][k]
-
-  } 
+function tableFunction() {
+  for (i = 0; i < tableData.length; i++) {
+    var tr = document.createElement('tr');
+    document.getElementById('ta').appendChild(tr);
+    for (var k in tableData[i]) {
+      var td = document.createElement('td');
+      tr.appendChild(td);
+      td.innerText = tableData[i][k];
+    }
   }
-  
 }
-
 
 // task 3
-function addList(){
- var newli = document.createElement('li')
- newli.innerText = document.getElementById('todolist').value
- document.getElementById('tb').appendChild(newli)
+function addList() {
+  var newli = document.createElement('li');
+  newli.innerText = document.getElementById('todolist').value;
+  document.getElementById('tb').appendChild(newli);
 }
 
-function myclearAll(){
-  var ele = document.getElementById('tb')
- while(ele.firstChild){
-   ele.removeChild(ele.firstChild)
- }
+function myclearAll() {
+  var ele = document.getElementById('tb');
+  while (ele.firstChild) {
+    ele.removeChild(ele.firstChild);
+  }
 }
-
 
 // 方法二
 // function myclearAll(){
