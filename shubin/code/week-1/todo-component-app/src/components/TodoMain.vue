@@ -80,6 +80,7 @@ export default {
     },
     addItem: function (message) {
       this.todoList.push({
+        id: Date.now(),
         message: message,
         star: false,
         completed: false,
