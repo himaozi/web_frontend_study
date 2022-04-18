@@ -9,6 +9,10 @@ body{
 }
 
 /* 头部顶部 */
+.header .wrapper{
+    position: relative;
+    z-index: 999;
+}
 .header .top {
     height: 31px;
     background-color: #f7f7f7;
@@ -102,32 +106,24 @@ body{
 .header .bottom li {
     position: relative;
     float: left;
-    padding-left: 16px;
-    padding-right: 20px;
+    margin-left: 10px;
+    margin-right:10px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
-
-.header .triangle{
-   display: inline-block;
-    width: 0;
-    margin-left: 4px;
-    border: 4px solid transparent;
-    border-top-color: #333;
-    vertical-align: text-bottom;
+.header .bottom .dropdown{
+    margin-left: 0;
+    margin-right: 0;
 
 }
-.header .unvisible{
-    display: none;
+.header .dropdown>a{
+    background-color: #fff;
+    color: #333;
+    border-style: none;
+ 
 }
-.header a:hover .unvisible{
-    display: inline-block;
-    position:absolute;
-    left: 0;
-    top: 30px;
-    width: 120px;
-    height: 300px;
-    background-color: rgba(255, 255, 255,0.8);
-    
-}
+
+
 .header .bottom .fr {
     position: relative;
     width: 250px;
@@ -163,12 +159,23 @@ body{
 }
 
 /* banner */
-.banner{
+.banner .wrapper{
+    position: relative;
+    z-index: 0;
+    width: 1190px;
     height: 320px;
-    background-image: url(../images/web.jpg);
 }
+
+.slideContainer{ 
+    width: 1190px;
+    height: 320px;
+    margin: 0 auto;
+}
+
 .banner ul {
-    float: left;
+    position: absolute;
+    left: 0;
+    top:0;
     height: 430px;
     width: 230px;
     padding: 20px 40px 40px;
@@ -176,16 +183,17 @@ body{
     border-radius: 0 0 10px 10px;
 }
 
-.banner li{
+.banner ul li{
+    width: 230px;
     line-height: 40px;
    color: #fff;
 }
 
-.banner a{
+.banner ul a{
     color: #fff;
 }
 
-.banner li span{
+.banner ul li span{
     float: right;
 }
 
@@ -402,6 +410,7 @@ body{
 
 .courseInfo .bottom{
     padding: 16px 12px 0px;
+    font-size: 18px;
 }
 
 .courseInfo .currentPrice{
@@ -416,6 +425,12 @@ body{
 
 .courseInfo .bottom{
     position: relative;
+}
+.courseInfo h3{
+    font-size: 18px;
+}
+.courseInfo h4{
+    font-size: 16px;
 }
 .courseInfo li .per{
     position: absolute;

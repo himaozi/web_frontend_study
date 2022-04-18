@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="博学谷官网，传播播客旗下高端在线教育品牌">
     <meta name="keywords" content="线上培训 教育 程序员 黑马">
+    <!-- Bootstrap 的 CSS 文件 -->
+    <link rel="stylesheet" href="./bootstrap-4.6.1-dist/css/bootstrap.min.css">
+
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/index.css">
+
     <title>博学谷官网</title>
 </head>
 
@@ -41,19 +44,57 @@
         <!-- 头部下部 -->
         <div class="bottom">
             <div class="wrapper">
-                <div class="fl"><a href="#">全部学科</a></div>
-                <div class="center">
-                    <ul>
+                <div class="fl"><a href="#">全部学科</a>
+
+                </div>
+
+                <div class="center" >
+                    <ul >
                         <li><a href="#">首页</a></li>
                         <li><a href="#">就业班</a></li>
-                        <li><a href="#">职业路线<ul class="unvisible"><li></li></ul></a><div class="triangle"></div></li>
-                        <li><a href="#">微课<ul class="unvisible"><li></li></ul></a><div class="triangle"></div></li>
-                        <li><a href="#">学习社区<ul class="unvisible"><li></li></ul></a><div class="triangle"></div></li>
+                        <!-- 下拉菜单 -->
+                        <li class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                              职业路线
+                            </a>
+                          
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"  >
+                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="#">Another action</a>
+                              <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+    
+                        </li>
+                        <li class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                              微课
+                            </a>
+                          
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"  >
+                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="#">Another action</a>
+                              <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+    
+                        </li>
+                        <li class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                              学习社区
+                            </a>
+                          
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"  >
+                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="#">Another action</a>
+                              <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+    
+                        </li>
                         <li><a href="#">问答精灵</a></li>
                         <li><a href="#">论坛</a></li>
                     </ul>
                 </div>
-                <div class="fr"><input type="text" placeholder="搜索关键字" name="" id=""><a href="#" class="search"></a></div>
+                <div class="fr"><input type="text" placeholder="搜索关键字" name="" id=""><a href="#" class="search"></a>
+                </div>
             </div>
         </div>
     </div>
@@ -62,8 +103,54 @@
 
     <!-- banner -->
     <div class="banner">
+
         <div class="wrapper">
-            <ul>
+
+            <!-- 轮播图 -->
+            <div class="slideContainer">
+
+                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="./images/web.jpg" class="d-block w-100" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>First slide label</h5>
+                                <p>Some representative placeholder content for the first slide.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./images/web - 02.jpg" class="d-block w-100" alt="Second slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Second slide label</h5>
+                                <p>Some representative placeholder content for the second slide.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./images/web - 03.jpg" class="d-block w-100" alt="Third slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Third slide label</h5>
+                                <p>Some representative placeholder content for the third slide.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions"
+                        data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions"
+                        data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </button>
+                </div>
+            </div>
+            <ul class="nav">
                 <li><a href="#">Java</a><span>></span></li>
                 <li><a href="#">前端</a><span>></span></li>
                 <li><a href="#">大数据</a><span>></span></li>
@@ -74,17 +161,29 @@
                 <li><a href="#">网络营销</a><span>></span></li>
                 <li><a href="#">Python</a><span>></span></li>
             </ul>
+
+
+
+
         </div>
     </div>
     <!-- 优惠券 -->
     <div class="discount">
         <div class="wrapper">
             <ul>
-                <li><a href="#"><span></span><p>200元券<br> 关注微信可获得200元</p></a></li>
-                <li><a href="#"><span></span><p>200元券<br> 关注微信可获得200元</p></a></li>
-                <li><a href="#"><span></span><p>200元券<br> 关注微信可获得200元</p></a></li>
-                <li><a href="#"><span></span><p>200元券<br> 关注微信可获得200元</p></a></li>
-                
+                <li><a href="#"><span></span>
+                        <p>200元券<br> 关注微信可获得200元</p>
+                    </a></li>
+                <li><a href="#"><span></span>
+                        <p>200元券<br> 关注微信可获得200元</p>
+                    </a></li>
+                <li><a href="#"><span></span>
+                        <p>200元券<br> 关注微信可获得200元</p>
+                    </a></li>
+                <li><a href="#"><span></span>
+                        <p>200元券<br> 关注微信可获得200元</p>
+                    </a></li>
+
             </ul>
         </div>
     </div>
@@ -96,31 +195,31 @@
                 <h3><a href="#">热门公开课</a></h3>
                 <ul>
                     <li><a href="#">
-                        <div class="top"></div>
-                        <div class="bottom">
-                            <div class="left">
-                                <h6>javascript</h6>
-                                <h6>开始时间：11/11 20:30</h6>
+                            <div class="top"></div>
+                            <div class="bottom">
+                                <div class="left">
+                                    <h6>javascript</h6>
+                                    <h6>开始时间：11/11 20:30</h6>
+                                </div>
+                                <div class="right">
+                                    <h6>讲师：XXX</h6>
+                                    <h6><span></span> 直播未开始</h6>
+                                </div>
                             </div>
-                           <div class="right">
-                            <h6>讲师：XXX</h6>
-                            <h6><span></span> 直播未开始</h6>
-                           </div>
-                        </div>
-                    </a></li>
+                        </a></li>
                     <li><a href="#">
-                        <div class="top"></div>
-                        <div class="bottom">
-                            <div class="left">
-                                <h6>javascript</h6>
-                                <h6>开始时间：11/11 20:30</h6>
+                            <div class="top"></div>
+                            <div class="bottom">
+                                <div class="left">
+                                    <h6>javascript</h6>
+                                    <h6>开始时间：11/11 20:30</h6>
+                                </div>
+                                <div class="right">
+                                    <h6>讲师：XXX</h6>
+                                    <h6><span></span> 直播未开始</h6>
+                                </div>
                             </div>
-                           <div class="right">
-                            <h6>讲师：XXX</h6>
-                            <h6><span></span> 直播未开始</h6>
-                           </div>
-                        </div>
-                    </a></li>
+                        </a></li>
                 </ul>
                 <span class="rightLogo"></span>
             </div>
@@ -150,7 +249,7 @@
         <div class="wrapper">
             <!-- 顶部导航栏 -->
             <div class="nav">
-               <a href="#" class="hd">精品微课</a>
+                <a href="#" class="hd">精品微课</a>
                 <ul>
                     <li><a href="#">课程推荐</a></li>
                     <li><a href="#">JavaEE</a></li>
@@ -165,41 +264,41 @@
             <div class="courseInfo">
                 <ul>
                     <li><a href="#">
-                        <div class="top"></div>
-                        <div class="bottom">
-                            <h3>【前端】Vue.js入门和实践</h3>
-                            <h4>讲师：黑马讲师|18小时</h4>
-                            <span class="currentPrice">¥699.00</span><span class="delete">¥899.00</span>
-                            <div class="per"><span></span>149</div>
-                        </div>
-                    </a></li>
+                            <div class="top"></div>
+                            <div class="bottom">
+                                <h3>【前端】Vue.js入门和实践</h3>
+                                <h4>讲师：黑马讲师|18小时</h4>
+                                <span class="currentPrice">¥699.00</span><span class="delete">¥899.00</span>
+                                <div class="per"><span></span>149</div>
+                            </div>
+                        </a></li>
                     <li><a href="#">
-                        <div class="top"></div>
-                        <div class="bottom">
-                            <h3>【前端】Vue.js入门和实践</h3>
-                            <h4>讲师：黑马讲师|18小时</h4>
-                            <span class="currentPrice">¥699.00</span><span class="delete">¥899.00</span>
-                            <div class="per"><span></span>149</div>
-                        </div>
-                    </a></li>
+                            <div class="top"></div>
+                            <div class="bottom">
+                                <h3>【前端】Vue.js入门和实践</h3>
+                                <h4>讲师：黑马讲师|18小时</h4>
+                                <span class="currentPrice">¥699.00</span><span class="delete">¥899.00</span>
+                                <div class="per"><span></span>149</div>
+                            </div>
+                        </a></li>
                     <li><a href="#">
-                        <div class="top"></div>
-                        <div class="bottom">
-                            <h3>【前端】Vue.js入门和实践</h3>
-                            <h4>讲师：黑马讲师|18小时</h4>
-                            <span class="currentPrice">¥699.00</span><span class="delete">¥899.00</span>
-                            <div class="per"><span></span>149</div>
-                        </div>
-                    </a></li>
+                            <div class="top"></div>
+                            <div class="bottom">
+                                <h3>【前端】Vue.js入门和实践</h3>
+                                <h4>讲师：黑马讲师|18小时</h4>
+                                <span class="currentPrice">¥699.00</span><span class="delete">¥899.00</span>
+                                <div class="per"><span></span>149</div>
+                            </div>
+                        </a></li>
                     <li><a href="#">
-                        <div class="top"></div>
-                        <div class="bottom">
-                            <h3>【前端】Vue.js入门和实践</h3>
-                            <h4>讲师：黑马讲师|18小时</h4>
-                            <span class="currentPrice">¥699.00</span><span class="delete">¥899.00</span>
-                            <div class="per"><span></span>149</div>
-                        </div>
-                    </a></li>
+                            <div class="top"></div>
+                            <div class="bottom">
+                                <h3>【前端】Vue.js入门和实践</h3>
+                                <h4>讲师：黑马讲师|18小时</h4>
+                                <span class="currentPrice">¥699.00</span><span class="delete">¥899.00</span>
+                                <div class="per"><span></span>149</div>
+                            </div>
+                        </a></li>
                 </ul>
             </div>
         </div>
@@ -208,11 +307,15 @@
     <div class="footer">
         <div class="wrapper">
             <div class="top">
-                <div class="cloud"><h3>博学谷云课堂</h3>博学谷云课堂，是传智播客旗下的在线教育品牌。专注整合传智优勢
+                <div class="cloud">
+                    <h3>博学谷云课堂</h3>博学谷云课堂，是传智播客旗下的在线教育品牌。专注整合传智优勢
                     教学资源．打造适台在线学习并能保证教学结果的优质教学产品，同
                     时打造和运营一整套教育生态软件体系，为用户提供满足自身成长和
-                    发展要求的有效服务。</div>
-                <div class="contact"><h3>关注我们</h3><a href="#" id="weibo"></a><a href="#" id="weixin"></a></div>
+                    发展要求的有效服务。
+                </div>
+                <div class="contact">
+                    <h3>关注我们</h3><a href="#" id="weibo"></a><a href="#" id="weixin"></a>
+                </div>
                 <div class="url">
                     <h3>友情链接</h3>
                     <a href="#">传智播客</a>
@@ -237,6 +340,13 @@
             </div>
         </div>
     </div>
+
+    <!-- jQuery 和 Bootstrap 集成包（集成了 Popper） -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+    <script src="./bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>
