@@ -1,0 +1,55 @@
+@width: 100px;
+@height: @width + 100px;
+@color: #f93d66;
+@color2: #00ffff;
+@small: 30px;
+.bordered {
+  margin: 10px auto;
+}
+
+.out {
+  width: @width;
+  height: @height;
+  background-color: @color;
+  padding-top: 10px;
+  .mid {
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    .bordered();
+    .inner {
+      width: @small;
+      height: @small;
+      background-color: @color2;
+    }
+  }
+  .mid2 {
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    .bordered();
+    .inner2 {
+      width: @small;
+      height: @small;
+      background-color: @color2;
+    }
+  }
+  .mid3 {
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    .bordered();
+    .inner3 {
+      width: @small;
+      height: @small;
+      background-color: @color2;
+    }
+  }
+}
+
+// 这里只展示了less的变量, mixin, 嵌套功能 也是最常用的2个功能 其他功能 https://less.bootcss.com/#%E6%B7%B7%E5%90%88%EF%BC%88mixins%EF%BC%89
+// 如果没有less 有的css会很恶心 重复代码会非常多 比如上边的例子你如果要定义 mid1 mid2 mid3 3个的样式
+// 如果用普通css 你得写 .out .mid1{ }   .out .mid2{}  .out .mid3{} 如果嵌套多层会很繁琐 嵌套就非常简单方便了
+
+// 总之less让css变得强大 方便快捷 less可以看成超级css 这是less.js的功劳 必须引入less.js才能使用
+ 
