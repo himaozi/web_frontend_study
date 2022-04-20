@@ -1,0 +1,456 @@
+/* 设置网页背景色,所有版心宽度和居中 */
+body {
+  background-color: #F0F0F0;
+}
+.wrapper {
+  width: 1190px;
+  margin: 0 auto;
+}
+.header {
+  position: relative;
+  z-index: 999;
+  /* 头部顶部 */
+  /* 头部中部 */
+  /* 头部底部 */
+}
+.header .top {
+  height: 31px;
+  background-color: #F0F0F0;
+  font-size: 14px;
+  line-height: 31px;
+}
+.header .top #brand1 {
+  color: #999;
+  padding-right: 15px;
+  border-right: 1px solid #999;
+}
+.header .top #brand2 {
+  color: #333;
+  padding-left: 15px;
+}
+.header .middle {
+  background-color: #fff;
+}
+.header .middle .wrapper {
+  line-height: 76px;
+  height: 76px;
+}
+.header .middle .wrapper .fl a {
+  display: inline-block;
+  width: 255px;
+  height: 38px;
+  background-image: url(../images/logo.png);
+  vertical-align: middle;
+}
+.header .middle .wrapper .fr {
+  height: 76px;
+}
+.header .middle .wrapper .fr a {
+  padding-left: 14px;
+  vertical-align: middle;
+}
+.header .middle .wrapper .fr a:nth-child(2) {
+  padding-right: 14px;
+  border-right: 1px solid #333;
+}
+.header .bottom {
+  background-color: #fff;
+}
+.header .bottom .wrapper {
+  position: relative;
+  height: 42px;
+  line-height: 42px;
+}
+.header .bottom .wrapper .fl {
+  display: inline-block;
+  width: 230px;
+  height: 42px;
+  background-color: #3492FD;
+  border-radius: 10px 10px 0 0;
+  line-height: 42px;
+  text-align: center;
+}
+.header .bottom .wrapper .fl a {
+  vertical-align: middle;
+}
+.header .bottom .wrapper .center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 42px;
+  width: 650px;
+}
+.header .bottom .wrapper .center li {
+  position: relative;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.header .bottom .wrapper .center .dropdown {
+  margin-left: 0;
+  margin-right: 0;
+}
+.header .bottom .wrapper .center .dropdown a {
+  background-color: #fff;
+  color: #333;
+  border-style: none;
+}
+.header .bottom .wrapper .fr {
+  position: relative;
+  width: 250px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 15px;
+  border: 1px solid #F0F0F0;
+  box-shadow: 0 2px 5px 1px rgba(64, 60, 67, 0.16);
+}
+.header .bottom .wrapper .fr input {
+  width: 180px;
+  height: 16px;
+  margin-left: 16px;
+  border-right: 1px solid #918b8b;
+  vertical-align: middle;
+}
+.header .bottom .wrapper .fr ::-webkit-input-placeholder {
+  color: #918b8b;
+}
+.header .bottom .wrapper .fr .search {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translate(0, -50%);
+  /* 50%为自身尺寸的一半 */
+  width: 20px;
+  height: 20px;
+  background-image: url(../images/search.png);
+}
+/* banner */
+.banner .wrapper {
+  position: relative;
+  z-index: 0;
+  height: 320px;
+  /* 轮播图 */
+}
+.banner .wrapper .slideContainer {
+  width: 1190px;
+  height: 320px;
+  margin: 0 auto;
+}
+.banner .wrapper ul {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 430px;
+  width: 230px;
+  padding: 20px 40px 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 10px 10px;
+}
+.banner .wrapper ul li {
+  width: 230px;
+  line-height: 40px;
+  color: #fff;
+}
+.banner .wrapper ul li a {
+  color: #fff;
+}
+.banner .wrapper ul li span {
+  float: right;
+}
+/* 优惠券 */
+.discount .wrapper {
+  height: 101px;
+}
+.discount ul {
+  float: right;
+  width: 954px;
+  height: 101px;
+  background-color: #fff;
+  margin-top: 11px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+}
+.discount ul li {
+  float: left;
+  width: 238px;
+  height: 101px;
+  line-height: 30px;
+}
+.discount ul li a span {
+  width: 44px;
+  height: 44px;
+  float: left;
+  margin: 30px 10px 26px 30px;
+  background-image: url(../images/infos.png);
+}
+.discount ul li p {
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: normal;
+}
+/* 热门公开课及公告 */
+.anounce .wrapper {
+  height: 256px;
+  margin-top: 30px;
+}
+.anounce .wrapper .fl {
+  position: relative;
+  width: 693px;
+  height: 256px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+.anounce .wrapper .fl h3 {
+  height: 21px;
+  font-weight: normal;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+.anounce .wrapper .fl h3 a {
+  font-weight: normal;
+  font-size: 21px;
+}
+.anounce .wrapper .fl ul {
+  height: 202px;
+  margin-left: 50px;
+  margin-top: 14px;
+}
+.anounce .wrapper .fl ul li {
+  float: left;
+  width: 285px;
+  height: 196px;
+  margin-right: 22px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 1px rgba(64, 60, 67, 0.16);
+}
+.anounce .wrapper .fl ul li .top {
+  height: 120px;
+  background-image: url(../images/pub.png);
+  border-radius: 10px 10px 0 0;
+}
+.anounce .wrapper .fl ul li .bottom {
+  padding: 16px 20px 14px 18px;
+  line-height: 25px;
+}
+.anounce .wrapper .fl ul li .bottom .left {
+  float: left;
+}
+.anounce .wrapper .fl ul li .bottom .left h6 {
+  font-weight: normal;
+  font-size: 14px;
+}
+.anounce .wrapper .fl ul li .bottom .right {
+  float: right;
+}
+.anounce .wrapper .fl ul li .bottom .right h6 {
+  font-weight: normal;
+  font-size: 14px;
+}
+.anounce .wrapper .fl ul li .bottom .right h6 span {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-image: url(../images/pub01.png);
+  vertical-align: middle;
+}
+.anounce .wrapper .fl ul .rightLogo {
+  position: absolute;
+  right: 0;
+  top: 120px;
+  width: 30px;
+  height: 61px;
+  background-image: url(../images/right.png);
+}
+.anounce .wrapper .fr {
+  width: 488px;
+  height: 256px;
+  background-color: #fff;
+  padding-left: 50px;
+  padding-top: 22px;
+  border-radius: 10px;
+}
+.anounce .wrapper .fr .left {
+  float: left;
+}
+.anounce .wrapper .fr .left h3 {
+  font-weight: normal;
+  font-size: 21px;
+}
+.anounce .wrapper .fr .left .news {
+  width: 122px;
+  height: 185px;
+  margin-top: 10px;
+  background-image: url(../images/news.png);
+}
+.anounce .wrapper .fr .right {
+  float: left;
+  width: 250px;
+  margin-left: 36px;
+  font-size: 14px;
+}
+.anounce .wrapper .fr .right h4 {
+  vertical-align: middle;
+}
+.anounce .wrapper .fr .right h4 a {
+  font-size: 18px;
+  font-weight: normal;
+  color: #3492fd;
+  border-bottom: 1px solid #3492FD;
+}
+.anounce .wrapper .fr .right ul li {
+  margin-top: 10px;
+  width: 250px;
+}
+.anounce .wrapper .fr .right ul li span {
+  width: 5px;
+  height: 5px;
+  display: inline-block;
+  margin-right: 10px;
+  background-color: #3492FD;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+/*精品微课  */
+.course .wrapper {
+  height: 290px;
+  margin-top: 23px;
+}
+.course .wrapper .nav {
+  float: left;
+  width: 1190px;
+  height: 36px;
+  line-height: 36px;
+}
+.course .wrapper .nav .hd {
+  float: left;
+  font-size: 21px;
+}
+.course .wrapper .nav ul {
+  float: left;
+}
+.course .wrapper .nav ul li {
+  float: left;
+  margin-left: 22px;
+}
+.course .wrapper .courseInfo ul li {
+  float: left;
+  width: 290px;
+  height: 254px;
+  background-color: #fff;
+  margin-right: 8px;
+  border-radius: 10px;
+}
+.course .wrapper .courseInfo ul li:last-child {
+  margin-right: 0px;
+}
+.course .wrapper .courseInfo ul li a .top {
+  width: 290px;
+  height: 160px;
+  background-image: url(../images/wk.jpg);
+  border-radius: 10px 10px 0 0;
+  background-size: contain;
+}
+.course .wrapper .courseInfo ul li a .bottom {
+  position: relative;
+  padding: 16px 12px 0px;
+  font-size: 18px;
+}
+.course .wrapper .courseInfo ul li a .bottom h3 {
+  font-size: 18px;
+}
+.course .wrapper .courseInfo ul li a .bottom h4 {
+  font-size: 16px;
+}
+.course .wrapper .courseInfo ul li a .bottom .currentPrice {
+  color: red;
+}
+.course .wrapper .courseInfo ul li a .bottom .delete {
+  margin-left: 20px;
+  font-size: 14px;
+  text-decoration: line-through;
+}
+.course .wrapper .courseInfo ul li a .bottom .per {
+  position: absolute;
+  bottom: 3px;
+  right: 10px;
+  font-size: 14px;
+}
+.course .wrapper .courseInfo ul li a .bottom .per span {
+  display: inline-block;
+  width: 11px;
+  height: 14px;
+  margin-right: 5px;
+  background-image: url(../images/per.png);
+  vertical-align: baseline;
+}
+/* 页脚 */
+.footer {
+  height: 294px;
+  margin-top: 20px;
+  background-color: #333;
+  color: #ccc;
+}
+.footer a {
+  color: #ccc;
+  font-size: 14px;
+}
+.footer .wrapper .top {
+  height: 210px;
+  padding-top: 60px;
+  border-bottom: 1px solid #686767;
+}
+.footer .wrapper .top .cloud {
+  float: left;
+  width: 450px;
+  font-size: 14px;
+}
+.footer .wrapper .top .cloud h3 {
+  margin-bottom: 20px;
+  font-size: 21px;
+  font-weight: bold;
+}
+.footer .wrapper .top .contact {
+  float: left;
+  width: 120px;
+  margin-left: 50px;
+}
+.footer .wrapper .top .contact h3 {
+  margin-bottom: 20px;
+  font-size: 21px;
+  font-weight: bold;
+}
+.footer .wrapper .top .contact #weibo {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  margin-right: 20px;
+  background-image: url(../images/weibo.png);
+}
+.footer .wrapper .top .contact #weixin {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  background-image: url(../images/weixin.png);
+}
+.footer .wrapper .top .url {
+  float: left;
+  margin-left: 60px;
+}
+.footer .wrapper .top .url h3 {
+  margin-bottom: 20px;
+  font-size: 21px;
+  font-weight: bold;
+}
+.footer .wrapper .top .url a {
+  margin-right: 25px;
+  margin-bottom: 24px;
+}
+.footer .wrapper .bottom {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 30px;
+  line-height: 28px;
+}
