@@ -22,25 +22,28 @@ router.post('todo-item', async (ctx, next) => {
 
 router.put('todo-item', async (ctx, next) => {
   const body = ctx.request.body
-  await TodoItem.findByIdAndUpdate(body.id, { star: body.star, completed: body.completed }).exec().then(console.log)
-  ctx.response.body = successResponse
-  await next()
+  TodoItem.findByIdAndUpdate(body.id, { star: body.star, completed: body.completed })
+    .exec()
+    .then(() => {
+      ctx.response.body = successResponse
+    })
+    .then(next())
 })
 
 router.get('todo-items', async (ctx, next) => {
-  await TodoItem.find({}).exec().then(function (todoItems) {
-    successResponse.data = todoItems
-    ctx.response.body = successResponse
-    // 这里成功打印数据
-    console.log(successResponse)
+  const todoItems = await TodoItem.find({}).exec().then(res => {
+    ctx.response.body = 'sucesss';
+    return res;
   })
-  // 响应 not found
-  await next()
+  console.log('=======')
+  console.log(todoItems)
+  // successResponse.data = todoItems
+  // next()
 })
 
 router.get('todo-item', async (ctx, next) => {
   ctx.response.body = { messgae: 'get' }
-  await next()
+  // await next()
 })
 
 router.del('todo-item', async (ctx, next) => {
@@ -48,7 +51,7 @@ router.del('todo-item', async (ctx, next) => {
   console.log('wait to delete: ' + id)
   TodoItem.findOneAndDelete({ _id: id })
   ctx.response.body = successResponse
-  await next()
+  // await next()
 })
 
 module.exports = router

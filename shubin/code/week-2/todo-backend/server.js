@@ -24,11 +24,12 @@ const errorHandler = async (ctx, next) => {
     }
   }
 }
-router.use('/index', index.routes(), index.allowedMethods())
-// 子路由的路径就不需要加入'/'了
-router.use('/', todo.routes(), todo.allowedMethods())
+
 app.use(errorHandler)
 app.use(logHander)
 app.use(koaBody())
 app.use(router.routes())
+router.use('/index', index.routes(), index.allowedMethods())
+// 子路由的路径就不需要加入'/'了
+router.use('/', todo.routes(), todo.allowedMethods())
 app.listen(3000)

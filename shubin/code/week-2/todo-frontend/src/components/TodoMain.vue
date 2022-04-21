@@ -1,6 +1,9 @@
 <template>
   <main>
     <div id="app" class="app">
+       <button class="button-info" v-on:click="mockTest">
+        <span>测试</span>
+      </button>
       <label>
         <input class="input-add" v-model="message" />
       </label>
@@ -38,6 +41,7 @@
 
 <script>
 import TodoItem from "./TodoItem.vue";
+import axios from 'axios';
 export default {
   name: "TodoMain",
   components: {
@@ -46,64 +50,88 @@ export default {
   data() {
     return {
       // todo 在created 的生命周期时 请求后端服务初始化
-      starList: [
-        {
-          id: 0,
-          message: "test1",
-          star: true,
-          completed: false,
-        },
-        {
-          id: 1,
-          message: "test2",
-          star: true,
-          completed: false,
-        },
-        {
-          id: 2,
-          message: "test3",
-          star: true,
-          completed: false,
-        },
-      ],
+      starList: [],
       todoList: [],
     };
+  },
+  created(){
+    console.log('created')
+    axios.get('/todo-items')
+    .then((response) => {
+      this.starList = response.data.rows
+    })
+    .catch((error) => console.error(error))
+    .then(() => console.log('created done'))
   },
   methods: {
     removeElm(array, item) {
       array.splice(array.indexOf(item), 1);
     },
+    // 成功才执行添加，失败不添加
     addItem: function (message) {
-      //todo 调用post /todo-item
-      this.todoList.push({
-        id: Date.now(),
-        message: message,
-        star: false,
-        completed: false,
-        createTime: Date.now(),
-      });
+      const item = {
+          id:Date.now(),
+          message: message,
+          star: false,
+          completed: false
+        }  
+      axios.post('/todo-item',item)
+      .then(response => {
+       if('01'=== response.data.result){
+         this.todoList.push(item)
+       }else{
+         console.error('add error')
+       }
+      })
+      .catch(error => console.error(error))
     },
     toggleStar: function (item) {
       // todo 调用put /todo-item
       item.star = !item.star;
-      if (item.star) {
-        this.removeElm(this.todoList, item);
-        this.starList.push(item);
-      } else {
-        this.removeElm(this.starList, item);
-        this.todoList.push(item);
-      }
+      axios.put('/todo-item',item)
+      .then(response => {
+        if ('01' === response.data.result){
+          if (item.star) {
+            this.removeElm(this.todoList, item);
+            this.starList.push(item);
+          } else {
+            this.removeElm(this.starList, item);
+            this.todoList.push(item);
+          }
+        }
+        else{
+          console.error('更新item 异常', item)
+        }
+      })
+      .catch(error => console.error(error))
     },
     deleteItem: function (item) {
       // todo 调用delete /todo-item
       // todo 是否需要再请求list，还是通过/todo-item 接口返回？
-      item.star
-        ? this.removeElm(this.starList, item)
-        : this.removeElm(this.todoList, item);
-      console.log("delete item");
+      axios.delete('/todo-item',item).then(
+        response => {
+           if ('01' === response.data.result){
+            item.star
+            ? this.removeElm(this.starList, item)
+            : this.removeElm(this.todoList, item);
+            console.log("delete item");
+           }
+           else{
+             console.error('delelte item error')
+           }
+        }
+      ).catch(console.error)
+       
     },
     toggleCompleted: function (item) {
-      item.completed = !item.completed;
+      axios.post('/todo-item',item).then(
+        response => {
+          if ('01' === response.data.result){
+            item.completed = !item.completed;
+            console.log('toggleCompleted success')
+          }
+        }
+      )
     },
   },
   computed: {
