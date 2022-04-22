@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  padding: 20px;
+  flex-wrap: nowrap;
+  background-color: #808080;
+  height: 500px;
+}
+.wrapper .left {
+  width: 200px;
+  background-color: red;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.wrapper .center {
+  width: 200px;
+  background-color: #00ff2a;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.wrapper .right {
+  width: 200px;
+  background-color: #00b7ff;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
