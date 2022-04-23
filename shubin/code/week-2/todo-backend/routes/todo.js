@@ -1,57 +1,70 @@
 const router = require('koa-router')()
 const TodoItem = require('../models/todoItem')
 
-const successResponse = { code: 1, messgae: 'success' }
-const failureResponse = { code: 0, messgae: 'failure' }
+const successResponse = {
+  code: 1,
+  messgae: 'success',
+  data: {
+    rows: []
+  }
+}
+
+// 处理跨域预检请求
+router.options('todo-item', (ctx, next) => {
+  ctx.response.body = successResponse
+  ctx.response.set('Access-Control-Allow-Origin', '*')
+  ctx.response.set('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,PUT,DELETE')
+  ctx.response.set('Access-Control-Allow-Headers', 'X-PINGOTHER, Content-Type')
+})
+
 router.post('todo-item', async (ctx, next) => {
   const todoItem = new TodoItem(ctx.request.body)
   console.log('wait to saved:' + todoItem)
-  // 没有等待直接返回了... 收到的响应为 Not Found
-  todoItem.save((err) => {
-    if (err) {
-      console.error('save failure: ' + err)
-      ctx.response.body = failureResponse
-    } else {
-      console.log('save success: ' + todoItem._id)
-      // response还没有设置，就直接返回了
+  await todoItem.save().then(
+    (response) => {
       ctx.response.body = successResponse
     }
-  })
-  await next()
+  )
+  console.log('saved:' + todoItem)
 })
 
 router.put('todo-item', async (ctx, next) => {
   const body = ctx.request.body
-  TodoItem.findByIdAndUpdate(body.id, { star: body.star, completed: body.completed })
+  await TodoItem.findOneAndUpdate({ id: body.id }, { star: body.star, completed: body.completed })
     .exec()
-    .then(() => {
+    .then((res) => {
+      console.log('update result: ', res)
       ctx.response.body = successResponse
+      // 为什么需要了预检请求还让要下面的请求也设置一次？
+      ctx.response.set('Access-Control-Allow-Origin', '*')
     })
-    .then(next())
 })
 
 router.get('todo-items', async (ctx, next) => {
-  const todoItems = await TodoItem.find({}).exec().then(res => {
-    ctx.response.body = 'sucesss';
-    return res;
+  await TodoItem.find({}).exec().then(res => {
+    successResponse.data.rows = res
+    ctx.response.body = successResponse
+    ctx.response.set('Access-Control-Allow-Origin', '*')
   })
-  console.log('=======')
-  console.log(todoItems)
-  // successResponse.data = todoItems
-  // next()
 })
 
-router.get('todo-item', async (ctx, next) => {
-  ctx.response.body = { messgae: 'get' }
-  // await next()
+router.get('todo-item/:itemId', async (ctx, next) => {
+  await TodoItem.findOne({ id: ctx.params.itemId }).then(res => {
+    ctx.response.body = res
+    ctx.response.set('Access-Control-Allow-Origin', '*')
+  })
 })
 
-router.del('todo-item', async (ctx, next) => {
-  const id = ctx.request.body
+// 如果只有 ctx 则无法获取到body的内容;
+// http delete 不能接受参数
+router.del('todo-item/:itemId', async (ctx, next) => {
+  const id = ctx.request.params.itemId
   console.log('wait to delete: ' + id)
-  TodoItem.findOneAndDelete({ _id: id })
-  ctx.response.body = successResponse
-  // await next()
+  await TodoItem.findOneAndDelete({ id: id }).then(res => {
+    ctx.response.body = successResponse
+    ctx.response.set('Access-Control-Allow-Origin', '*')
+    console.log('delete success: ' + id)
+  })
 })
 
 module.exports = router

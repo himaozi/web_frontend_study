@@ -1,9 +1,6 @@
 <template>
   <main>
     <div id="app" class="app">
-       <button class="button-info" v-on:click="mockTest">
-        <span>测试</span>
-      </button>
       <label>
         <input class="input-add" v-model="message" />
       </label>
@@ -42,6 +39,12 @@
 <script>
 import TodoItem from "./TodoItem.vue";
 import axios from 'axios';
+
+axios.defaults.baseURL = 'http://localhost:3000/'
+// 像这个方法是定义在Vue实例内部，还是外部呢？
+// checkBussinessSuccess
+
+
 export default {
   name: "TodoMain",
   components: {
@@ -49,19 +52,35 @@ export default {
   },
   data() {
     return {
+      rawList:[],
       // todo 在created 的生命周期时 请求后端服务初始化
       starList: [],
       todoList: [],
+      message: ''
     };
   },
   created(){
-    console.log('created')
-    axios.get('/todo-items')
+    console.log('created start')
+    axios.get('todo-items')
     .then((response) => {
-      this.starList = response.data.rows
+      const result = response.data
+      console.log(result)
+      if(result.code === 1){
+        // 改成计算属性
+        this.todoList = result.data.rows.filter(each => !each.star)
+        this.starList = result.data.rows.filter(each => each.star)
+      }else{
+        console.error('业务失败： ',result.message)
+      }
     })
     .catch((error) => console.error(error))
     .then(() => console.log('created done'))
+
+    // 测试其他get请求
+    axios.get('todo-item/12345678')
+        .then((response) => {
+          console.log(response)
+        })
   },
   methods: {
     removeElm(array, item) {
@@ -75,22 +94,27 @@ export default {
           star: false,
           completed: false
         }  
-      axios.post('/todo-item',item)
+      axios.post('todo-item',item)
       .then(response => {
-       if('01'=== response.data.result){
-         this.todoList.push(item)
-       }else{
-         console.error('add error')
-       }
+        const result = response.data
+        console.log(result)
+        if(result.code === 1){
+          this.todoList.push(item)
+        }else{
+          console.error('add error')
+        }
       })
       .catch(error => console.error(error))
     },
     toggleStar: function (item) {
       // todo 调用put /todo-item
       item.star = !item.star;
-      axios.put('/todo-item',item)
+      console.log(item)
+      axios.put('todo-item',item)
       .then(response => {
-        if ('01' === response.data.result){
+        const result = response.data
+        console.log(result)
+        if(result.code === 1){
           if (item.star) {
             this.removeElm(this.todoList, item);
             this.starList.push(item);
@@ -108,13 +132,15 @@ export default {
     deleteItem: function (item) {
       // todo 调用delete /todo-item
       // todo 是否需要再请求list，还是通过/todo-item 接口返回？
-      axios.delete('/todo-item',item).then(
+      axios.delete('todo-item/' + item.id).then(
         response => {
-           if ('01' === response.data.result){
-            item.star
-            ? this.removeElm(this.starList, item)
-            : this.removeElm(this.todoList, item);
-            console.log("delete item");
+            const result = response.data
+            console.log(result)
+            if(result.code === 1){
+              item.star
+              ? this.removeElm(this.starList, item)
+              : this.removeElm(this.todoList, item);
+              console.log("delete item");
            }
            else{
              console.error('delelte item error')
@@ -124,10 +150,14 @@ export default {
        
     },
     toggleCompleted: function (item) {
-      axios.post('/todo-item',item).then(
+      item.completed = !item.completed;
+      console.log('===complete===')
+      console.log(item)
+      axios.put('todo-item',item).then(
         response => {
-          if ('01' === response.data.result){
-            item.completed = !item.completed;
+          const result = response.data
+          console.log(result)
+          if(result.code === 1){
             console.log('toggleCompleted success')
           }
         }
@@ -137,10 +167,10 @@ export default {
   computed: {
     //todo 排序数组
     sortStarList() {
-      return this.starList.slice(0).sort((a, b) => a.createTime - b.createTime);
+      return this.starList.length>0? this.starList.slice(0).sort((a, b) => a.createTime - b.createTime):this.starList
     },
     sortTodoList() {
-      return this.todoList.slice(0).sort((a, b) => a.createTime - b.createTime);
+      return this.todoList.length>0?this.todoList.slice(0).sort((a, b) => a.createTime - b.createTime):this.todoList
     },
   },
 };

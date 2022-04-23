@@ -1,9 +1,11 @@
 <template>
   <li>
+    {{item.completed}}
     <input
       type="checkbox"
       name="completed"
       :value="item.completed"
+      :checked="item.completed"
       @click="$emit('toggleCompleted', item)"
     />
     <span :class="[{ itemCompleted: item.completed }]">{{ item.message }}</span>

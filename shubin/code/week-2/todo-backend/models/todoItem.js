@@ -1,6 +1,10 @@
 const Mongoose = require('mongoose')
 // 定义结构
 const TodoItemSchema = new Mongoose.Schema({
+  id: {
+    type: String,
+    required: true
+  },
   message: {
     type: String,
     required: true
