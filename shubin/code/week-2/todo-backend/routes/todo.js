@@ -10,7 +10,7 @@ const successResponse = {
 }
 
 // 处理跨域预检请求
-router.options('todo-item', (ctx, next) => {
+router.options('todo-item', 'todo-item/:itemId', (ctx, next) => {
   ctx.response.body = successResponse
   ctx.response.set('Access-Control-Allow-Origin', '*')
   ctx.response.set('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,PUT,DELETE')
@@ -23,6 +23,8 @@ router.post('todo-item', async (ctx, next) => {
   await todoItem.save().then(
     (response) => {
       ctx.response.body = successResponse
+
+      ctx.response.set('Access-Control-Allow-Origin', '*')
     }
   )
   console.log('saved:' + todoItem)

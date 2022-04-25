@@ -132,7 +132,8 @@ export default {
     deleteItem: function (item) {
       // todo 调用delete /todo-item
       // todo 是否需要再请求list，还是通过/todo-item 接口返回？
-      axios.delete('todo-item/' + item.id).then(
+      console.log(item.id)
+      axios.delete('todo-item/'+item.id).then(
         response => {
             const result = response.data
             console.log(result)
