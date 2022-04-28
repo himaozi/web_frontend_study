@@ -32,7 +32,7 @@
                         <div class="input-group mb-3">
                             <span class="input-group-text" >书名</span>
                             <input type="text" class="form-control" placeholder="name" aria-label="Author"
-                                aria-describedby="basic-addon1" id="bookname">
+                                aria-describedby="basic-addon1" id="name">
                         </div>
                     </div>
                     <div class="col">
@@ -42,7 +42,7 @@
                                 aria-describedby="basic-addon1" id="description">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="mysearch">查询</button>
+                    <button type="submit" class="btn btn-primary" id="mysearch" onclick="searchBooks()">查询</button>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
                         data-whatever="@mdo">新建</button>
                         <!-- 新建弹出框 -->
@@ -188,6 +188,7 @@
                 <li class="page-item">
                     <a class="page-link" href="#">Next</a>
                 </li>
+                
             </ul>
         </nav>
 
