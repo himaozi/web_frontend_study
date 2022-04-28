@@ -1,0 +1,34 @@
+.wrapper {
+  margin: 50px;
+}
+.add {
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+}
+.add .top {
+  height: 50px;
+  background-color: #88b5c0;
+  border-radius: 10px 10px 0 0;
+}
+.add .top h1 {
+  font-size: 21px;
+  color: #fff;
+  line-height: 50px;
+  margin-left: 20px;
+  vertical-align: middle;
+}
+.add .bottom {
+  padding: 20px;
+  padding-bottom: 5px;
+}
+.add .bottom .input-group-text {
+  border-radius: 5px 0  0 5px ;
+}
+.add .bottom .btn-primary {
+  width: 100px;
+  height: 38px;
+  margin-right: 20px;
+}
+.table tbody td {
+  width: 300px;
+}

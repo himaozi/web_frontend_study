@@ -1,0 +1,46 @@
+@theme_color: rgb(136, 181, 192);
+@border_radius:10px;
+@border:1px solid #ced4da;
+.wrapper{
+    margin: 50px;
+}
+.add{
+    border: @border;
+    border-radius:@border_radius;
+    .top{
+        height: 50px;
+        background-color:@theme_color;
+        border-radius:@border_radius @border_radius 0 0;
+        h1{
+            font-size: 21px;
+            color: #fff;
+            line-height: 50px;
+            margin-left: 20px;
+            vertical-align: middle;
+        }
+    }
+    .bottom{
+        padding: 20px;
+        padding-bottom: 5px;
+        .input-group-text{
+            border-radius: 5px 0  0 5px ;
+        }
+        .btn-primary{
+            width: 100px;
+            height: 38px;
+            margin-right: 20px;
+         
+        }
+    }
+}
+
+
+.table{
+    tbody{
+        td{
+            width: 300px;
+        }
+
+    }
+   
+}

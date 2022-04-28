@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap 的 CSS 文件 -->
+    <link rel="stylesheet" href="./bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./CSS/base.css">
+    <link rel="stylesheet" href="./CSS/library.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="add">
+            <div class="top">
+                <h1>图书管理</h1>
+            </div>
+            <div class="bottom">
+                <!-- bootstrap表单 -->
+                <div class="row g-3">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" >类别</span>
+                            <input type="text" class="form-control" placeholder="type" aria-label="Bookname"
+                                aria-describedby="basic-addon1" id="type">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" >书名</span>
+                            <input type="text" class="form-control" placeholder="name" aria-label="Author"
+                                aria-describedby="basic-addon1" id="bookname">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" >描述</span>
+                            <input type="text" class="form-control" placeholder="description" aria-label="Publisher"
+                                aria-describedby="basic-addon1" id="description">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="mysearch">查询</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                        data-whatever="@mdo">新建</button>
+                        <!-- 新建弹出框 -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">新增图书</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">图书类别</label>
+                                            <input type="text" class="form-control" id="addbooks_type">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">图书名称</label>
+                                            <input type="text" class="form-control"id="addbooks_name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">描述</label>
+                                            <textarea class="form-control" id="addbooks_description"></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                    <button type="button" class="btn btn-primary">确定</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="wrapper">
+        <table class="table" id="booktable">
+            <thead>
+                <tr>
+                    <th scope="col">编号</th>
+                    <th scope="col">图书类别</th>
+                    <th scope="col">图书名称</th>
+                    <th scope="col">描述</th>
+                    <th scope="col">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>
+
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#exampleModalCenter" id="edit_button">
+                        编辑
+                    </button>
+
+                    <!-- 编辑弹窗 -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">编辑检查项</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">图书类别</label>
+                                            <input type="text" class="form-control" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">图书名称</label>
+                                            <input type="text" class="form-control" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">描述</label>
+                                            <textarea class="form-control" ></textarea>
+                                        </div>
+                                    </form> 
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                    <button type="button" class="btn btn-primary">继续</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                        删除
+                      </button>
+
+                        <!-- 删除弹窗 -->
+                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="staticBackdropLabel">提示</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  此操作将不可逆，是否继续？
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                  <button type="button" class="btn btn-primary">继续</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <!-- 分页 -->
+    <div class="wrapper">
+        <nav aria-label="...">
+            <ul class="pagination">
+                <li class="page-item disabled">
+                    <a class="page-link">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+
+
+
+    <!-- jQuery 和 Bootstrap 集成包（集成了 Popper） -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="./JS/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+    <script src="./bootstrap-4.6.1-dist/js/bootstrap.min.js"></script>
+    <script src="./JS/library.js"></script>
+
+
+</body>
+
+</html>
