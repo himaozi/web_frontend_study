@@ -1,20 +1,22 @@
 // 封装表格渲染函数
-function tableGeneration(data, pageSize, PageCurrent) {
+function tableGeneration(data, pageSize, pageCurrent) {
   $('table tbody').empty();
   content = ''
   for (i = 0; i < pageSize; i++) {
-    var k = i + pageSize * (PageCurrent - 1)
+    var k = i + pageSize * (pageCurrent - 1)
     if (k < data.length) {
       const book = data[k];
       content += `
-          <tr>
+          <tr id=${book.id}>
               <td>${book.id}</td>
               <td>${book.type}</td>
               <td>${book.name}</td>
               <td>${book.description}</td>
               <td>
                   <button class="btn btn-primary" onClick="editBook(${book.id})">编辑</button>
-                  <button class="btn btn-primary" onClick="delBook(${book.id})">删除</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" onClick="delBook(${book.id})">
+                        删除
+                      </button>
               </td>
           <tr>
       `;
@@ -27,7 +29,7 @@ function tableGeneration(data, pageSize, PageCurrent) {
 
 
 // 定义分页渲染函数
-function pageGeneration(data, pageSize, PageCurrent) {
+function pageGeneration(data, pageSize, pageCurrent) {
   let pageSum = Math.ceil(data.length / pageSize)
   if (pageSize === null) {
     pageSize = 3
@@ -44,12 +46,11 @@ function pageGeneration(data, pageSize, PageCurrent) {
   $('.pagination').html(content)
 
   // 渲染默认状态下的表格
-  tableGeneration(data, pageSize, PageCurrent)
+  tableGeneration(data, pageSize, pageCurrent)
   // 点击页码渲染对应分页表格
-  $('button').click(function () {
-    PageCurrent = this.value
-    console.log(PageCurrent)
-    tableGeneration(data, pageSize, PageCurrent)
+  $('.page-link').click(function () {
+    pageCurrent = this.value
+    tableGeneration(data, pageSize, pageCurrent)
   })
 
 }
@@ -57,14 +58,14 @@ function pageGeneration(data, pageSize, PageCurrent) {
 
 
 // 获取所有图书，渲染成表格
-function getBooklist() {
+function getbookList() {
   axios.get('/api/books').then(function (res) {
-    let booklist = Array.from(res.data.data);
+    let bookList = Array.from(res.data.data);
     // 可以加个排序
-    pageGeneration(booklist, 3, 1)
+    pageGeneration(bookList, 3, 1)
   });
 }
-getBooklist();
+getbookList();
 
 
 
@@ -88,15 +89,19 @@ function searchBooks() {
     // 有信息则发送数据
 
     //01 获取当前页码（待完善函数）
+    var pageCurrent =1
+    var pageSize = 3
 
 
     // 02 发送数据
-    url = '/api/books' + '/' + currentPage + '/' + PageSize
+    url = '/api/books' + '/' + pageCurrent + '/' + pageSize
     axios.get(url, { Params: book }).then(function (res) {
-      let booklist = Array.from(res.data.data);
+      let bookList = Array.from(res.data.data);
+      console.log('查询 成功')
 
 
     // 03  接收数据后渲染表格
+    pageGeneration(bookList, pageSize, pageCurrent) 
 
 
     });
@@ -110,7 +115,21 @@ function searchBooks() {
 
 // 删除图书
 function delBook(id) {
-  alert('你正在删除id为' + id + '的书籍');
+  $('#confirm').click(function(){
+    url = '/api/books' + '/' + id
+     // axios.delete(url).then(function (res) {
+  //   if(res.flag){
+  //     // 找到被点击按钮的父节点并删除
+  //      $("id").remove()
+
+
+  //   }
+   
+
+  // })
+  console.log('点击生效')
+  })
+ 
 
 }
 

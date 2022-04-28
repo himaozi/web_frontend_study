@@ -98,79 +98,29 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>
-
-                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#exampleModalCenter" id="edit_button">
-                        编辑
-                    </button>
-
-                    <!-- 编辑弹窗 -->
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalCenterTitle">编辑检查项</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="recipient-name" class="col-form-label">图书类别</label>
-                                            <input type="text" class="form-control" >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="recipient-name" class="col-form-label">图书名称</label>
-                                            <input type="text" class="form-control" >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="message-text" class="col-form-label">描述</label>
-                                            <textarea class="form-control" ></textarea>
-                                        </div>
-                                    </form> 
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                                    <button type="button" class="btn btn-primary">继续</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-                        删除
-                      </button>
-
-                        <!-- 删除弹窗 -->
-                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="staticBackdropLabel">提示</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                  此操作将不可逆，是否继续？
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                                  <button type="button" class="btn btn-primary">继续</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                </tr>
+              
 
             </tbody>
+            <!-- 删除弹窗 -->
+            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">提示</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      此操作将不可逆，是否继续？
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                      <button type="button" class="btn btn-primary" data-dissmiss=“modal” id="confirm">继续</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </table>
     </div>
     <!-- 分页 -->
@@ -190,6 +140,7 @@
                 </li>
                 
             </ul>
+            <span>每页显示<input type="text" placeholder="3" class="input_pageSize" value="3">条</span>
         </nav>
 
     </div>
