@@ -1,5 +1,5 @@
 // 获取所有图书，渲染成表格
-function getbooklist() {
+function getBooklist() {
   axios.get('/api/books').then(function (res) {
     let booklist = Array.from(res.data.data);
     // 可以加个排序
@@ -52,7 +52,7 @@ function getbooklist() {
 }
 // 装个code spell checker插件 会提示一些命名问题
 // 一般命名都是小驼峰 小写开头 这个应该是getBookList更规范点
-getbooklist();
+getBooklist();
 
 // 删除图书
 function delBook(id) {
@@ -62,20 +62,13 @@ function delBook(id) {
 function editBook(id) {
   alert('你编辑操作id为' + id + '的书籍');
 }
-$('button').click(function () {
-  // // 获取要删除的书籍的id
-  // let Params = $(this).id
-  // console.log(Params)
-  // let url ='http://106.14.162.86:8080/books/'+Params
-  // axios.delete(url).then(function(){
 
-  // })
 
-  alert('点击生效');
-});
+
 // 删除接口生效测试
-var url = '/api/books' + '106';
-axios.delete(url).then(function () {});
+var url = '/api/books/' + '108';
+axios.delete(url).then(function(res){
+  console.log('删除success')})
 
 // 编辑接口生效测试
 
@@ -89,7 +82,7 @@ var data = {
   updateTime: '',
 };
 axios.put(url, data).then(function (res) {
-  console.log('success');
+  console.log('编辑success');
 });
 
 // 增加数据接口生效测试
@@ -103,7 +96,7 @@ var data = {
   updateTime: '',
 };
 axios.post(url, data).then(function (res) {
-  console.log('success');
+  console.log('增加success');
 });
 
 // 通过id获取数据测试
@@ -111,7 +104,7 @@ var url = '/api/books';
 var Params = 106;
 
 axios.get(url, { Params: Params }).then(function (res) {
-  console.log('success');
+  console.log('id查询success');
 });
 
 // // 新增图书
