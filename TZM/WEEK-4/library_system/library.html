@@ -44,7 +44,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary" id="mysearch" onclick="searchBooks()">查询</button>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-                        data-whatever="@mdo">新建</button>
+                        data-whatever="@mdo" onclick="addBook()">新建</button>
                         <!-- 新建弹出框 -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -60,15 +60,15 @@
                                     <form>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">图书类别</label>
-                                            <input type="text" class="form-control" id="addbooks_type">
+                                            <input type="text" class="form-control" id="addbooks_type" value="">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">图书名称</label>
-                                            <input type="text" class="form-control"id="addbooks_name">
+                                            <input type="text" class="form-control"id="addbooks_name" value="">
                                         </div>
                                         <div class="form-group">
                                             <label for="message-text" class="col-form-label">描述</label>
-                                            <textarea class="form-control" id="addbooks_description"></textarea>
+                                            <textarea class="form-control" id="addbooks_description" value=""></textarea>
                                         </div>
                                     </form>
                                 </div>
@@ -140,7 +140,7 @@
                 </li>
                 
             </ul>
-            <span>每页显示<input type="text" placeholder="3" class="input_pageSize" value="3">条</span>
+            <span>每页显示<input type="text" placeholder="3" class="input_pageSize" value="">条</span><button id="pageSize_btn" class="btn btn-primary" onclick="getbookList()">刷新</button>
         </nav>
 
     </div>

@@ -39,3 +39,10 @@
   border-radius: 2px;
   border: 1px solid #ced4da;
 }
+#pageSize_btn {
+  height: 30px;
+  width: 60px;
+  margin: 5px;
+  line-height: 20px;
+  text-align: center;
+}
